@@ -9,6 +9,22 @@ h1 {
   padding: 1em;
 }
 
+h2 {
+  padding: 1em;
+}
+
+h3 {
+  padding: 1em;
+}
+
+h4 {
+  padding: 1em;
+}
+
+p {
+  padding: 1em;
+}
+
 textarea {
   width:800px;
   height: 250px;
