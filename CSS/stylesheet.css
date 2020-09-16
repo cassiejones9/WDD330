@@ -26,7 +26,7 @@ p {
   padding: .5em;
 }
 
-textarea {
+#story_editor {
   width:800px;
   height: 250px;
   background-color: azure;
@@ -35,4 +35,5 @@ textarea {
 
 button {
   padding: 10px;
+  margin: 3px 8px;
 }
