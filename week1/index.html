@@ -5,22 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WDD 330</title>
     <link rel="stylesheet" href="/style.css" />
+    <script> 
+      function loadStory(){
+        var storyName = document.getElementById(“name_input”).value
+        var storyHTML = localStorage.getItem(storyName)
+        document.getElementById(“story_editor”).value = storyHTML
+}
+      function saveStory(){ 
+        var storyName = document.getElementById(“name_input”).value
+        var storyHTML = document.getElementById(“story_editor”).value
+          localStorage.setItem(storyName, storyHTML)
+}
+      function dsiplayStory(){
+        var storyHTML = document.getElementById(“story_editor”).value
+        document.getElementById(“story_display”).innerHTML = storyHTML
+  }
+     </script>
   </head>
   <body>
     <h1>WDD 330 - Web Frontend Development</h1>
     <h2>Week01</h2>
-    <h3>Coding from the Reading This Week</h3>
-    <h4></h4>
-    <p></p>
-    
+    <h3>Below is the Coding from the Reading This Week</h3>
+    <h4>Story Editor</h4>
+    <p>Story Name:<input id=storynameinput></input></p>
+    <section>
+      <button onclick="loadStory()">Find and Edit It</button>
+      <button onclick="saveStory()">Save It</button>
+      <button onclick="displayStory()">Display It</button>
+      </section>
+    <textarea id="story_editor" placeholder="Write a totally awesome story here."></textarea>
     <ul>
       <li>
       </li>
         <h3>Questions:</h3>
         <ol>
           <li>
-            Question goes here
+            Where/How should we save the functions for the buttons?
           </li>
+          <li></li>
         </ol>
       </li>
     </ul>
