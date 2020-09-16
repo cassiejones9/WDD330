@@ -8,3 +8,9 @@ h1 {
   color: white;
   padding: 1em;
 }
+
+textarea {
+  width:800px;
+  height: 250px;
+  background-color: azure;
+}
