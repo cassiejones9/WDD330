@@ -5,7 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WDD 330</title>
     <link rel="stylesheet" href="CSS/stylesheet.css" />
-    <script></script>
+    <script>
+    const links = [
+{ week: 1, label: 'Notes', url: 'week1.html', },
+{ week: 2, label: 'Notes', url: 'week2.html', },
+{ week: 3, label: 'Notes', url: 'week3.html', },
+];
+
+const ol = document.getElementById('ol');
+links.forEach(link => {
+let li = document.createElement('li');
+let a = document.createElement('a');
+a.setAttribute('href', link.url);
+a.innerText = link.label;
+li.appendChild(a);
+ol.appendChild(li);
+});
+    </script>
   </head>
   <body>
     <h1>WDD 330 - Web Frontend Development</h1>
