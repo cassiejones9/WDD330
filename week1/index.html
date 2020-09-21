@@ -56,7 +56,8 @@
             localStorage.setItem(storyName, storyHTML);
         }
         function displayStory() {
-            var storyHTML = document.getElementById("story_editor").value;
+            var storyName = document.getElementById("name_input").value;
+            var storyHTML = localStorage.getItem(storyName);
             document.getElementById("story_display").innerHTML = storyHTML;
         }
     </script>
