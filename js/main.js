@@ -5,6 +5,22 @@
 // }
 // ]
 
+//     const links = [
+// { week: 1, label: 'Notes', url: 'week1.html', },
+// { week: 2, label: 'Notes', url: 'week2.html', },
+// { week: 3, label: 'Notes', url: 'week3.html', },
+// ];
+
+// const ol = document.getElementById('ol');
+// links.forEach(link => {
+// let li = document.createElement('li');
+// let a = document.createElement('a');
+// a.setAttribute('href', link.url);
+// a.innerText = link.label;
+// li.appendChild(a);
+// ol.appendChild(li);
+// });
+
     
     function loadStory() {
             var storyName = document.getElementById("name_input").value;
