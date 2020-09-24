@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WDD 330 - Team Work</title>
+    <link rel="stylesheet" href="../CSS/stylesheet.css" />
+    <script>
+        // This function adds all numbers leading up to the user input number
+        function sumOfNumbers() {
+            var userNumber = parseInt(document.getElementById("user_input").value);
+            let sum = 0;
+            if (typeof userNumber == "number") {
+                for (let startnumber = 1; userNumber >= startnumber; startnumber++) {
+                    sum += startnumber;
+                }
+                document.getElementById("sum").innerHTML = sum;
+            }
+            else {
+                document.getElementById("sum").innerHTML = "Please enter a number";
+            }
+        }
+
+        // this was a simple addition equation. The instructions said to "add some more features to the calculator." So I just changed it from simple addition to a calculator with options.
+        const calculate = function () {
+            var user_add1 = parseFloat(document.getElementById("user_add1").value);
+            var user_add2 = parseFloat(document.getElementById("user_add2").value);
+            let operator = document.getElementById("calculator").value;
+            switch (operator) {
+                case "+":
+                    result = user_add1 + user_add2;
+                    break;
+                case "-":
+                    result = user_add1 - user_add2;
+                    break;
+                case "*":
+                    result = user_add1 * user_add2;
+                    break;
+                case "/":
+                    result = user_add1 / user_add2;
+                    break;
+
+            }
+            document.getElementById("answer").innerHTML = result;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Team Assignment Week 2</h1>
+    <h3>Fun Addition</h3>
+    <p>Type any number here <input id="user_input"></input> and I'll add all the numbers up to your number.</p>
+    <button onclick="sumOfNumbers()">Calculate</button>
+    <div id="sum"></div>
+    <h3>More Fun Addition</h3>
+    <p><input id="user_add1"></input> <label></label>
+        <select id="calculator">
+            <option disabled selected value> -- select an option -- </option>
+            <!-- originally, I had spelled out the operator in the place of value. Because it didn't line up with the switch case, it didn't work. My teammate helped me figure that out. -->
+            <option value="+">Add</option>
+            <option value="-">Subtract</option>
+            <option value="*">Times (multiply)</option>
+            <option value="/">Divide</option>
+            <!-- my button didn't work originally. I left off the parenthesis thinking it was just a variable name I was calling. My teammate helped me to see that you do indeed need the parenthesis. -->
+        </select> <input id="user_add2"></input><button onclick="calculate()">Equals</button></p>
+
+    <div id="answer"></div>
+</body>
+
+</html>
