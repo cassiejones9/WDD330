@@ -4,7 +4,7 @@ body {
 }
 
 h1 {
-  background-color: navy;
+  background-color: 1d3557;
   color: white;
   padding: 1em;
 }
@@ -27,6 +27,7 @@ p {
 }
 
 #headingLink {
+  background-color: 1d3557;
   color: white;
   text-align: center;
   text-decoration: none;
