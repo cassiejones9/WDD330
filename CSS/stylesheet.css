@@ -26,7 +26,7 @@ p {
   padding: .5em;
 }
 
-#headingLink {
+a:link, a:visited {
   background-color: 1d3557;
   color: white;
   text-align: center;
