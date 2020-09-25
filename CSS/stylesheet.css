@@ -26,6 +26,13 @@ p {
   padding: .5em;
 }
 
+a:link, a:visited {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
 #story_editor {
   width:800px;
   height: 250px;
