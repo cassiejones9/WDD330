@@ -4,13 +4,13 @@ body {
 }
 
 h1 {
-  background-color: 1d3557;
+  background-color: #1d3557;
   color: white;
   padding: 1em;
 }
 
 h2 {
-  color: navy;
+  color: #457b9d;
   padding: .5em;
 }
 
@@ -32,6 +32,11 @@ p {
   background-color: azure;
   padding: .5em;
   margin: 10px;
+}
+
+a:link, a:visited {
+  background-color: #1d3557;
+  color: white;
 }
 
 button {
