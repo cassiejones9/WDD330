@@ -27,12 +27,14 @@
             var storyHTML = localStorage.getItem(storyName);
             document.getElementById("story_editor").value = storyHTML;
         }
-        function saveStory() {
+    
+    function saveStory() {
             var storyName = document.getElementById("name_input").value;
             var storyHTML = document.getElementById("story_editor").value;
             localStorage.setItem(storyName, storyHTML);
         }
-        function displayStory() {
+        
+    function displayStory() {
             var storyName = document.getElementById("name_input").value;
             var storyHTML = localStorage.getItem(storyName);
             document.getElementById("story_display").innerHTML = storyHTML;
