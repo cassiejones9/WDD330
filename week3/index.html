@@ -24,10 +24,76 @@
     <li>Objects can be nested. You can have an object within an object.</li>
     <li>Obejcts can be a parameter in a function!</li>
     <h4>This</h4>
-    <li>This seems complicated, but I think it just means that when you want to refer to a variable or constant name within an object, you can specify for it to reference this object. So its like saying, "use this variable, not the one above."</li>
+    <li>This seems complicated, but I think it just means that when you want to refer to a variable or constant name
+        within an object, you can specify for it to reference this object. So its like saying, "use this variable, not
+        the one above."</li>
     <h3>A Map Loops Through An Array</h3>
-    <h4></h4>
+    <h4>JSON - JavaScript Object Notation</h4>
+    <li>JSON.parse(batman) - takes a string of data and makes it a JS object</li>
+    <li>JSON.stringify - takes a JS object and makes it a string</li>
+    <h4>Math Objects</h4>
+    <li>Lots of math objects. Here's a few</li>
+    <li>Math.abs()</li>
+    <li>Math.ceil()</li>
+    <li>Math.floor()</li>
+    <li>Math.round()</li>
+    <li>Math.trunc()</li>
+    <li>Math.exp()</li>
+    <li>Math.pow()</li>
+    <li>Math.sqrt()</li>
+    <li>Math.cbrt()</li>
+    <li>Math.hypot()</li>
+    <h4>Getter Methods</h4>
+    <li>getDay() getUTCDay() getDate() getMonth() getYear() getFullYear() getTime()</li>
+    <h4>Setter Methods</h4>
+    <li>You can set all of the above getter methods</li>
+    <h3>RegExp - Regular Expression</h3>
+    <li>Pattern that is used to search strings for matches to a pattern</li>
+    <li>The end of Chapter 5 of JavaScript Novice to Ninja has all sorts of information on patterns, testing, and
+        methods</li>
+    <h4>DOM - Document Obejct Model</h4>
+    <li>This turns everything on a webpage into a node. Why? So its easier to grab info. I think</li>
+    <li>So all of the "document." has to do with utilizing the DOM</li>
+    <li>Document.body returns the body element of a web page, as we saw in the previous example.</li>
+    <li>Document.links returns a node list of all the <a> elements and <area> elements that have an href attribute.</li>
+    <li>Document.anchors returns a node list of all the <a> elements that have a name attribute.</li>
+    <li>Document.forms returns a node list of all the forms in the document. This will be used when we cover forms in
+        Chapter 8.</li>
+    <li>innerHTML - returns all the child elements of a element as a string of HTML.</li>
+    <li>You can change the CSS styles of something too through JS. </li>
+    <h4>Events - Chapter 7</h4>
+    <li>addEventListener() is used on a node, has the code listen until the user does something, and then calls to
+        action some funtion or code. For example: document.body.addEventListener('click', doSomething); where
+        doSomething is a function.</li>
+    <li>You don't have to assign it to a node, like above. You could assign it to the entire page like this:
+        addEventListener('click', () => alert('You Clicked!'));</li>
+    <li>You could also create a function, and within that function, an event listener occurs.</li>
+    <h3>Example Code Below</h3>
+    <style>
+        p {
+            width: 200px;
+            height: 200px;
+            margin: 3em;
+            background-color: #ccc;
+            float: inline-start;
+        }
 
+        .highlight {
+            background-color: red;
+        }
+    </style>
+    <p id='click'>Click On Me</p>
+    <p id='dblclick'>Double Click On Me</p>
+    <p id='mouse'>Hover On Me</p>
+    <p>
+        <a id='broken' href='https://sitepoint.com'>Broken Link</a>
+    </p>
+    <script src='../js/main.js'></script>
+    <li>The example code is really cool. It takes the id, adds an event listener, and then assigns it to the class
+        highlight. So so cool</li>
+    <li>There are Keyboard Events => keydown, keypress, and keyup</li>
+    <li>There are touch events too for mobile devices => 'touchend'(when you end a touch)  'touchcenter'(when the user passes over the element that has an event)  'touchleave'(user is still touching the surface, but left the area with the event)  'touchcancel'(when a touch event is canceled) </li>
+    <li>Swiping doesn't have a specific event, but you can use a combination of touchstart, touchmove, and touchleave</li>
     <h3><a href="TAweek3.html">Team Activity - Array Cardio</a></h3>
 </body>
 
