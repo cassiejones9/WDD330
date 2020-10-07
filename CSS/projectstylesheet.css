@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    position: relative;
+    padding: 14px 8px 14px 40px;
+    background: #f0f0f0;
+    font-size: larger;
+    list-style-type: none;
+}
+
+/* This makes every other list item a different color */
+ul li:nth-child(odd) {
+    background: #d4d4d4;
+}
+
+ul li:hover {
+    background: #b8b8b8;
+}
+
+ul li:checked {
+    background: #636363;
+    color: white;
+    text-decoration: line-through;
+}
+
+#listItems {
+    max-width: 50%;
+    align-content: center;
+    margin-left: 10%;
+}
+
+.heading {
+    background-color: teal;
+    margin-top: 20px;
+    margin-left: 10%;
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
+    max-width: 50%;
+    align-content: center;
+}
+
+.heading::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+input {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: larger;
+}
+
+#addNewItem {
+    padding: 10px;
+    width: 15%;
+    background: #dadedf;
+    color: #636363;
+    float: left;
+    text-align: center;
+    font-size: larger;
+    border-radius: 0;
+}
+
+#addNewItem:hover {
+    background-color: #9c9c9c;
+    color: white;
+}
