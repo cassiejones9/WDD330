@@ -88,3 +88,8 @@ input.addEventListener('focus', () => alert('focused'), false);
 //     alert(JSON.stringify(hero)); // convert object to JSON string and display in alert dialog
 //     return hero;
 // }
+import Hikes from './hikes.js';
+const myHikes = new Hikes('hikeListId');
+window.addEventListener('load', () => {
+    myHikes.showHikeList();
+  });
