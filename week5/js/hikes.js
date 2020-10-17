@@ -76,6 +76,12 @@ export default class Hikes {
         {
         children[i].addEventListener('click', (event) => this.showOneHike(children[i].myName));
         }
+        // const childrenArray = Array.from(this.parentElement.children);
+        // childrenArray.forEach(child => {
+        //     child.addEventListener('touchend', e => {
+        //         this.showOneHike(e.currentTarget.dataset.name);
+        //     });
+        // });
     }
     buildBackButton() {
         const backButton = document.createElement("button");
@@ -93,7 +99,7 @@ function renderHikeList(hikes, parent) {
 }
 function renderOneHikeLight(hike) {
     const item = document.createElement("li");
-    item.myName = hike.name;
+    // item.myName = hike.name;
     item.innerHTML = ` 
   <div class="one">
   <h2>${hike.name}</h2>
