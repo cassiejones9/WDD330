@@ -8,20 +8,24 @@
 </head>
 
 <body>
-    <div id="topDiv" class="heading">
-        <form >
-        <h1>My To-Do List</h1>
-        <input type="text" id="newItem" placeholder="Add new to-do item here..." required>
-        <span onclick="addNewItem()" id="addNewItem">Add</span>
+    <div id="topDiv" class="header">
+        <form>
+            <h1>My To-Do List</h1>
+            <input type="text" id="myInput" placeholder="Add new to-do item here..." required>
+            <span onclick="newElement()" class="addBtn">Add</span>
     </div>
+    <div>
+        <ul id="myUL">
 
-    <ul id="listItems">
-        <li>Winco</li>
-        <li>Costco</li>
-        <li>Meal Plan</li>
-    </ul>
-</form>
-
+        </ul>
+    </div>
+    </form>
+    <footer id="footer">
+        <p>${numberOfTasks} tasks left</p> 
+        <button onclick="showAllItems()" id="showAllItems">All</button>
+        <button onclick="showActiveItems()" id="showActiveItems">Active</button>
+        <button onclick="showCompletedItems()" id="showCompletedItems">Completed</button>
+    </footer>
 </body>
 
 </html>
