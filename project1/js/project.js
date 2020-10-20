@@ -1,28 +1,3 @@
-// function addNewItem() {
-//     const listItem = document.createElement("li");
-//     const newItem = document.getElementById("newItem");
-//     const t = document.createTextNode(newItem);
-//   listItem.appendChild(t);
-//   if (newItem === '') {
-//     alert("You must write something!");
-//   } else {
-//     document.getElementById("listItems").appendChild(listItem);
-//   }
-//   document.getElementById("newItem").value = "";
-
-//   const span = document.createElement("SPAN");
-//   const txt = document.createTextNode("\u00D7");
-// //   span.className = "close";
-//   span.appendChild(txt);
-//   listItem.appendChild(span);
-
-//   for (i = 0; i < close.length; i++) {
-//     close[i].onclick = function() {
-//       var div = this.parentElement;
-//       div.style.display = "none";
-//     }
-//   }
-// }
 
 // class ToDoModel {
 //     constructor(key) {
@@ -63,12 +38,12 @@
 //     // we can use JSON.stringify to convert our object to a string that can be stored in localStorage.
 //     window.localStorage.setItem(key, JSON.stringify(data));
 //   }
-  
+
 //   function readFromLS(key) {
 //     // the string we retrieve from localStorage needs to be converted back to an object with JSON.parse
 //     return JSON.parse(window.localStorage.getItem(key));
 //   }
-  
+
 //   // Controller
 //   export default class ToDoController {
 //     constructor(listElement) {
@@ -78,12 +53,12 @@
 //       this.toDoModel = new ToDoModel('todo');
 //       this.listToDos();
 //     }
-  
+
 //     newToDo(value) {
 //       this.toDoModel.addToDo(value);
 //       this.listToDos();
 //     }
-  
+
 //     listToDos(hidden = true) {
 //       renderList(this.toDoModel.getToDos(), this.listElement, hidden);
 //     }
@@ -92,45 +67,45 @@
 //   function renderList(list, element, hidden) {
 //     console.log(list);
 //     element.innerHTML = '';
-  
+
 //     list.forEach(toDo => {
 //       const item = document.createElement('li');
 //       const formattedDate = new Date(toDo.id).toLocaleDateString('en-US');
-  
+
 //       item.innerHTML = `${formattedDate}: ${toDo.content}`;
 //       element.appendChild(item);
 //     });
 //   }
-  
-  // Another model for OOP in Javascript is factory functions.  This is an example of the todoModel as a factory function
-  // factory function
-  // function ToDoModel(key) {
-  //   const readFromLS = function(key) {
-  //     return JSON.parse(window.localStorage.getItem(key));
-  //   };
-  //   const writeToLS = function(key, data) {
-  //     window.localStorage.setItem(key, JSON.stringify(data));
-  //   };
-  //   let toDos = readFromLS(key) || [];
-  //   return {
-  //     get: function() {
-  //       return toDos;
-  //     },
-  //     add: function(value) {
-  //       // use Date.now() for UTC millisecond string.
-  //       const newToDo = {
-  //         id: new Date(),
-  //         content: value,
-  //         completed: false
-  //       };
-  //       toDos.push(newToDo);
-  //       writeToLS(key, toDos);
-  //     }
-  //   };
-  // }
-  // const myToDos = ToDoModel('todo');
 
-  var todoList = new Array();
+// Another model for OOP in Javascript is factory functions.  This is an example of the todoModel as a factory function
+// factory function
+// function ToDoModel(key) {
+//   const readFromLS = function(key) {
+//     return JSON.parse(window.localStorage.getItem(key));
+//   };
+//   const writeToLS = function(key, data) {
+//     window.localStorage.setItem(key, JSON.stringify(data));
+//   };
+//   let toDos = readFromLS(key) || [];
+//   return {
+//     get: function() {
+//       return toDos;
+//     },
+//     add: function(value) {
+//       // use Date.now() for UTC millisecond string.
+//       const newToDo = {
+//         id: new Date(),
+//         content: value,
+//         completed: false
+//       };
+//       toDos.push(newToDo);
+//       writeToLS(key, toDos);
+//     }
+//   };
+// }
+// const myToDos = ToDoModel('todo');
+
+var todoList = new Array();
 
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
@@ -144,30 +119,47 @@ for (i = 0; i < myNodelist.length; i++) {
 }
 
 // Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
+// var close = document.getElementsByClassName("close");
+// var i;
+// for (i = 0; i < close.length; i++) {
+//   close[i].onclick = function () {
+//     var div = this.parentElement;
+//     div.style.display = "none";
+//   }
+// }
 
 // Add a "checked" symbol when clicking on a list item
 var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
+list.addEventListener('click', function (ev) {
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('checked');
   }
 }, false);
 
-
+// create a close button, that X that closes or hides the item
+function closeButton() {
+  var span = document.createElement("SPAN");
+  // entity code - creates the multiplication sign X
+  var txt = document.createTextNode("\u00D7");
+  // className is a built in attribute from CSS
+  span.className = "close";
+  span.appendChild(txt);
+  // var close = document.getElementsByClassName("close");
+  // for (let i = 0; i < close.length; i++) {
+    span.onclick = function () {
+      var div = this.parentElement;
+      div.style.display = "none";
+      // console.log('some text');
+    }
+  // }
+  return span;
+}
 
 // Create a new list item when clicking on the "Add" button
 function newElement() {
   var li = document.createElement("li");
   var inputValue = document.getElementById("myInput").value;
-  todoList.push({name: inputValue, boolean: true});
+  todoList.push({ name: inputValue, boolean: true });
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
   if (inputValue === '') {
@@ -178,62 +170,48 @@ function newElement() {
   }
   // this resets the add todo item back to blank
   document.getElementById("myInput").value = "";
-
-  var span = document.createElement("SPAN");
-  // entity code - creates the multiplication sign X
-  var txt = document.createTextNode("\u00D7");
-  // className is a built in attribute from CSS
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
+  
+  li.appendChild(this.closeButton());
 }
 
-
-// function addNewItem() {
-//     const listItem = form.addNewItem.value;
-     
-// }
-
-
+ // create fucntion to show all items regardless of whether they are checked or not
 function showAllItems() {
   // "delete" the list first, the while loops through the Ul to remove them all
   var myUL = document.getElementById("myUL");
-  while(myUL.firstChild){
+  myUL.innerHTML = "";
+  while (myUL.firstChild) {
     myUL.removeChild(myUL.firstChild);
   }
-  // loop through the object array that you created in 194
+  // loop through the object array that you created in 133
 
   todoList.forEach(element => {
     var li = document.createElement("li");
     var txt = document.createTextNode(element.name);
     li.appendChild(txt);
-    // add the close button
     document.getElementById("myUL").appendChild(li);
-});
-  // create HTML elements that will be the to-do items
+    li.appendChild(this.closeButton());
+    // if the element is checked, then add the style
+  })
+
+  return 0;
+  
+}
+  
+
+    // create a function that just shows the completed, checked items
+  function checkedItems(){
+
+  }
+ 
+
+  // create a function that shows just the items that need to be completed
+  function needToComplete() {
+
+  }
+
 
   // get object data from the array you are looping through and store it in the HTML
 
   // take HTML objects and put it on your visible page
 
-}
-// arrayList.forEach(element => {
-//   element.name
-// });
-//   innerHTML.
-// }
 
-// function showActiveItems() {
-// filter data where it needs to be completed using a boolean 
-// }
-
-// function showCompletedItems() {
-// filter data where it shows the completed items using a boolean
-// }
