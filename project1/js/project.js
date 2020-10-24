@@ -193,7 +193,7 @@ function showAllItems() {
     // if the element is checked, then add the style
   })
 
-  return 0;
+  return todoList;
   
 }
   
