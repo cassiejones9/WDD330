@@ -1,71 +1,146 @@
-import { qs, writeToLS, readFromLS, bindTouch } from "./utils.js";
-//  private code here. Not exported from the module
-// we need a place to store our list of todos in memory
-let liveToDos = null;
+// Add a Todos class to the file, and make it the default export for the module
+// in the constructor you should set a variable with the element our todo list will be built in, and the key we will use to read/write from locaStorage.
+// import {ls} from './utilities.js';
 
-// View code here
-function renderList(list, element, hidden) {
-  console.log(list);
-  element.innerHTML = "";
+var date = new Date();
+var todoList = [];
 
-  list.forEach(toDo => {
-    const item = document.createElement("li");
-    const formattedDate = new Date(toDo.id).toLocaleDateString("en-US");
+var list = document.querySelector('ul');
+list.addEventListener('click', function (ev) {
+    if (ev.target.tagName === 'LI') {
+        var completed = ev.target.classList.toggle('checked');
+        for (var i = 0; i < todoList.length; i++) {
+            if (todoList[i].id = ev.target.id) {
+                todoList[i].completed = completed;
+                const data = JSON.stringify(todoList);
+                localStorage.setItem("todos", data);
+                break;
+            }
+        }
+    }
+}, false);
 
-    item.innerHTML = `<input type="checkbox"><label>${toDo.content}</label><button>X</button>`;
-    element.appendChild(item);
-  });
-}
-function getToDos(key) {
-  if (liveToDos === null) {
-    // we need to go read the list from the data store
-    liveToDos = readFromLS(key) || [];
-  }
+export default class Todos {
+    constructor(elementId) {
+        // querySelector returns the first element that matches, in this case its the id 
+        this.todoElement = document.querySelector('#myInput');
+        // this.parentElement = document.getElementById(elementId);
+        // this.todoKey = 'toDoList';
+    }
 
-  return liveToDos;
-}
+    getAllTodos() {
+        todoList = JSON.parse(localStorage.getItem("todos"));
+        return todoList;
+    }
+    closeButton(id) {
+        var span = document.createElement("SPAN");
+        // entity code - creates the multiplication sign X
+        var txt = document.createTextNode("\u00D7");
+        // className is a built in attribute from CSS
+        span.className = "close";
+        span.id = id;
+        span.appendChild(txt);
+        span.onclick = function (ev) {
+            var div = this.parentElement;
+            div.style.display = "none";
+            for (var i = 0; i < todoList.length; i++) {
+                if (todoList[i].id = ev.target.id) {
+                    todoList.splice(i, 1);
+                    const data = JSON.stringify(todoList);
+                    localStorage.setItem("todos", data);
+                    break;
+                }
+            }
+            // console.log('some text');
+        }
+        // }
+        return span;
+    }
 
-function addToDo(value, key) {
-  // use Date.now() for UTC millisecond string.
-  const newToDo = {
-    id: new Date(),
-    content: value,
-    completed: false
-  };
+    showTaskList() {
+        todoList = this.getAllTodos();
+        var myUL = document.getElementById("myUL");
+        myUL.innerHTML = "";
+        while (myUL.firstChild) {
+            myUL.removeChild(myUL.firstChild);
+        }
+        // loop through the object array that you created
 
-  liveToDos.push(newToDo);
-  writeToLS(key, liveToDos);
-}
-// this would be done last if you still have time...and if you haven't blown too many minds yet :)  If you do get here...mention how similar this method is with getToDos...they could probably be combined easily.
-function filterToDos(key, completed = true) {
-  let toDos = getToDos(key);
+        todoList.forEach((element)=> {
+            var li = document.createElement("li");
+            var txt = document.createTextNode(element.name);
+            li.appendChild(txt);
+            document.getElementById("myUL").appendChild(li);
+            li.appendChild(this.closeButton(element.id));
+            // if the element is checked, then add the style
+        })
 
-  // return a list of either completed or not completed toDos based on the parameter.
-  return toDos.filter(item => item.completed === hidden);
-}
-function findTodo(id) {}
-function completeTodo(id) {}
+        return todoList;
+    }
 
-// public
-export default class ToDos {
-  constructor(listElement, key) {
-    // opted to store the listElement inside the class.
-    this.listElement = listElement;
-    // key for localStorage saving and lookup
-    this.key = key;
-    // why bind here?
-    bindTouch("#addToDo", this.newToDo.bind(this));
-    this.listToDos();
-  }
+    showCompletedTodos() {
+        this.renderTaskList(this.renderCompletedTasks());
+    }
 
-  newToDo() {
-    const task = document.getElementById("todoInput");
-    addToDo(task.value, this.key);
-    task.value = "";
-    this.listToDos();
-  }
+    showActiveTodos() {
+        this.renderTaskList(this.renderActiveTasks());
+    }
 
-  listToDos(hidden = true) {
-    renderList(getToDos(this.key), this.listElement, hidden);
-  }
+    showAllTasks() {
+        this.renderTaskList(this.getAllTodos());
+    }
+
+    renderActiveTasks() {
+        var tasks = this.getAllTodos();
+        let activeList = tasks.filter(task => task.completed === false);
+        return activeList;
+    }
+
+    renderCompletedTasks() {
+        var tasks = this.getAllTodos();
+        let completedList = tasks.filter(task => task.completed === true);
+        return completedList;
+    }
+
+    createTaskList(task) {
+        var list = document.createElement("li");
+        var txt = document.createTextNode(task.name);
+        list.id = task.id;
+        list.className = task.completed ? 'checked': '';
+        list.appendChild(txt);
+        list.appendChild(this.closeButton(task.id));
+        document.getElementById("myUL").appendChild(list);
+    }
+
+    renderTaskList(tasks) {
+        const taskListElement = document.getElementById('myUL');
+        taskListElement.innerHTML = "";
+        tasks.forEach((task) => {
+            this.createTaskList(task);
+        })
+    }
+
+    addTodo() {
+        // this should grab the input in the html where users enter the text of the task, then send that along with the key to a SaveTodo() function. Then update the display with the current list of tasks.
+        var li = document.createElement("li");
+        var inputValue = document.getElementById("myInput").value;
+        var dateTime = date.getTime();
+        todoList.push({ id: dateTime, name: inputValue, completed: false });
+        const data = JSON.stringify(todoList);
+        localStorage.setItem("todos", data);
+        // if I want to do it in one line of code it looks like this
+        // localStorage.setItem("todos", JSON.stringify(todoList));
+        var t = document.createTextNode(inputValue);
+        li.appendChild(t);
+        if (inputValue === '') {
+            alert("You must write something!");
+        } else {
+            // this is where it gets displayed
+            document.getElementById("myUL").appendChild(li);
+            li.id = dateTime;
+            li.appendChild(this.closeButton());
+        }
+        // this resets the add todo item back to blank
+        document.getElementById("myInput").value = "";
+    }
 }
