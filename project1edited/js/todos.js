@@ -59,6 +59,9 @@ export default class Todos {
 
     showTaskList() {
         todoList = this.getAllTodos();
+        if (todoList == null){
+            todoList = new Array();
+        }
         var myUL = document.getElementById("myUL");
         myUL.innerHTML = "";
         while (myUL.firstChild) {
@@ -106,7 +109,7 @@ export default class Todos {
         var list = document.createElement("li");
         var txt = document.createTextNode(task.name);
         list.id = task.id;
-        list.className = task.completed ? 'checked': '';
+        list.className = task.completed ? 'checked' : '';
         list.appendChild(txt);
         list.appendChild(this.closeButton(task.id));
         document.getElementById("myUL").appendChild(list);

@@ -66,7 +66,7 @@ export default class Todos {
         }
         // loop through the object array that you created
 
-        todoList.forEach((element)=> {
+        todoList.forEach(element => {
             var li = document.createElement("li");
             var txt = document.createTextNode(element.name);
             li.appendChild(txt);
@@ -115,7 +115,7 @@ export default class Todos {
     renderTaskList(tasks) {
         const taskListElement = document.getElementById('myUL');
         taskListElement.innerHTML = "";
-        tasks.forEach((task) => {
+        tasks.forEach(task => {
             this.createTaskList(task);
         })
     }
