@@ -1,8 +1,6 @@
 // Add a Todos class to the file, and make it the default export for the module
 // in the constructor you should set a variable with the element our todo list will be built in, and the key we will use to read/write from locaStorage.
 // import {ls} from './utilities.js';
-
-var date = new Date();
 var todoList = [];
 
 var list = document.querySelector('ul');
@@ -10,7 +8,8 @@ list.addEventListener('click', function (ev) {
     if (ev.target.tagName === 'LI') {
         var completed = ev.target.classList.toggle('checked');
         for (var i = 0; i < todoList.length; i++) {
-            if (todoList[i].id = ev.target.id) {
+            // originally I had one equals sign, that just assigns the value instead of checking if its equal
+            if (todoList[i].id.toString() === ev.target.id) {
                 todoList[i].completed = completed;
                 const data = JSON.stringify(todoList);
                 localStorage.setItem("todos", data);
@@ -72,6 +71,8 @@ export default class Todos {
         todoList.forEach(element => {
             var li = document.createElement("li");
             var txt = document.createTextNode(element.name);
+            li.className = element.completed ? 'checked' : '';
+            li.id = element.id;
             li.appendChild(txt);
             document.getElementById("myUL").appendChild(li);
             li.appendChild(this.closeButton(element.id));
@@ -127,8 +128,10 @@ export default class Todos {
         // this should grab the input in the html where users enter the text of the task, then send that along with the key to a SaveTodo() function. Then update the display with the current list of tasks.
         var li = document.createElement("li");
         var inputValue = document.getElementById("myInput").value;
-        var dateTime = date.getTime();
+        // I originally had a getTime() here but it wasn't pulling in different numbers per todo item. Date.now() returned a different number per todo item.
+        var dateTime = Date.now();
         todoList.push({ id: dateTime, name: inputValue, completed: false });
+        li.id = dateTime;
         const data = JSON.stringify(todoList);
         localStorage.setItem("todos", data);
         // if I want to do it in one line of code it looks like this
