@@ -18,14 +18,14 @@
 //     return ;
 // }
 
-// export const ls = {
-//     set: function (name, item) {
-//         const data = JSON.stringify(item);
-//         window.localStorage.setItem(name, data);
+export const ls = {
+    set: function (item) {
+        const data = JSON.stringify(item);
+        window.localStorage.setItem("todos", data);
         
-//     },
-//     get: function (name) {
-//         const data = window.localStorage.getItem(name);
-//         return (data !== null) ? JSON.parse(data) : null;
-//     },
-// }
+    },
+    get: function () {
+        const data = window.localStorage.getItem("todos");
+        return (data !== null) ? JSON.parse(data) : null;
+    },
+}

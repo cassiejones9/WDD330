@@ -1,8 +1,8 @@
 // Add a Todos class to the file, and make it the default export for the module
 // in the constructor you should set a variable with the element our todo list will be built in, and the key we will use to read/write from locaStorage.
-// import {ls} from './utilities.js';
+import {ls} from './ls.js';
 var todoList = [];
-
+// var data = new ls();
 var list = document.querySelector('ul');
 list.addEventListener('click', function (ev) {
     if (ev.target.tagName === 'LI') {
@@ -11,8 +11,9 @@ list.addEventListener('click', function (ev) {
             // originally I had one equals sign, that just assigns the value instead of checking if its equal
             if (todoList[i].id.toString() === ev.target.id) {
                 todoList[i].completed = completed;
-                const data = JSON.stringify(todoList);
-                localStorage.setItem("todos", data);
+                // const data = JSON.stringify(todoList);
+                // localStorage.setItem("todos", data);
+                ls.set(todoList);
                 break;
             }
         }
@@ -28,7 +29,8 @@ export default class Todos {
     }
 
     getAllTodos() {
-        todoList = JSON.parse(localStorage.getItem("todos"));
+        todoList = ls.get();
+        // todoList = JSON.parse(localStorage.getItem("todos"));
         return todoList;
     }
     closeButton(id) {
@@ -45,8 +47,9 @@ export default class Todos {
             for (var i = 0; i < todoList.length; i++) {
                 if (todoList[i].id = ev.target.id) {
                     todoList.splice(i, 1);
-                    const data = JSON.stringify(todoList);
-                    localStorage.setItem("todos", data);
+                    ls.set(todoList);
+                    // const data = JSON.stringify(todoList);
+                    // localStorage.setItem("todos", data);
                     break;
                 }
             }
@@ -132,8 +135,9 @@ export default class Todos {
         var dateTime = Date.now();
         todoList.push({ id: dateTime, name: inputValue, completed: false });
         li.id = dateTime;
-        const data = JSON.stringify(todoList);
-        localStorage.setItem("todos", data);
+        ls.set(todoList);
+        // const data = JSON.stringify(todoList);
+        // localStorage.setItem("todos", data);
         // if I want to do it in one line of code it looks like this
         // localStorage.setItem("todos", JSON.stringify(todoList));
         var t = document.createTextNode(inputValue);
