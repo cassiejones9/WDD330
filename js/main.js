@@ -66,11 +66,11 @@ function displayStory() {
 
 // Chapter 8, Forms
 // For week 4
-console.log(document.forms);
-const form = document.forms['search'];
-// const [input,button] = form.elements;
-const input = form.elements.searchInput;
-input.addEventListener('focus', () => alert('focused'), false);
+// console.log(document.forms);
+// const form = document.forms['search'];
+// // const [input,button] = form.elements;
+// const input = form.elements.searchInput;
+// input.addEventListener('focus', () => alert('focused'), false);
 
 
 // form.addEventListener ('submit', search, false);

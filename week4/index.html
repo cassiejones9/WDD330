@@ -7,7 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>WDD 330</title>
     <link rel="stylesheet" href="../CSS/stylesheet.css" />
-    <script src="../js/main.js"></script>
+    <script src="../js/main.js">console.log(document.forms);
+        const form = document.forms['search'];
+        // const [input,button] = form.elements;
+        const input = form.elements.searchInput;
+        input.addEventListener('focus', () => alert('focused'), false);</script>
 </head>
 
 <body>
@@ -128,7 +132,7 @@
     <li>So when you are setting attributes inside this method, you can use the "writeable" keyword and set it to false.
         Then you can't change the value of it. It's a security measure.</li>
     <li>Here's an example: Object.defineProperty(me, 'eyeColor', { value: 'blue', writable: false, enumerable: true });
-        << { name: 'DAZ' , age: 21, eyeColor: 'blue' }</li>
+        results { name: 'DAZ' , age: 21, eyeColor: 'blue' }</li>
 <<<<<<< HEAD
     <li>So in the example above, we are setting or "definingProperty" of eyeColor to the value of blue, it can't be
         overwritten because writable is set to false, and it can be numbered or counted because enumerable is set to
