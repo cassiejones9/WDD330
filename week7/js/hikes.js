@@ -1,4 +1,4 @@
-import {comments} from './comments.js';
+// import {comments} from './comments.js';
 
 //create an array of hikes
 const hikeList = [
@@ -67,7 +67,7 @@ export default class Hikes {
         const hikeElement = this.parentElement;
         hikeElement.innerHTML = "";
         const hikeInfo = renderOneHikeFull(this.getHikeByName(hikeName));
-        hikeElement.appendChild(this.getHikeByName(hikeInfo));
+        hikeElement.appendChild(hikeInfo);
         hikeElement.appendChild(this.backButton);
     }
 
@@ -76,7 +76,7 @@ export default class Hikes {
         const hikeListElement = this.parentElement;
         const children = hikeListElement.childNodes;
         for (let i = 0; i < children.length; i++) {
-            children[i].addEventListener('click', (event) => this.showOneHike(children[i].myName));
+            children[i].addEventListener('click', (event) => this.showOneHike(children[i].getElementsByTagName("h2")[0].innerHTML));
         }
         // const childrenArray = Array.from(this.parentElement.children);
         // childrenArray.forEach(child => {
@@ -116,10 +116,7 @@ function renderOneHikeLight(hike) {
                 <h3>Difficulty</h3>
                 <p>${hike.difficulty}</p>
           </div>
-          <div>
-                  <h3>Comments</h3>
-                  <p>${comments.content}</p>
-             </div>
+          
   </div>
   </div>`;
     return item;
@@ -147,6 +144,11 @@ function renderOneHikeFull(hike) {
               <h3>Directions</h3>
               <p>${hike.directions}</p>
           </div>
+          <form>
+            <label for="comments">Enter Your Comments About This Hike:</label><br>
+            <textarea type="text" id="comment" value="Type Here" rows="5" cols="50"><br>
+            <input type="submit" value="Submit">
+          </form> 
   </div>
   </div>`;
     return item;

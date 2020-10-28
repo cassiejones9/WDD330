@@ -1,6 +1,4 @@
 //create an array of hikes
-
-// lifeserver is an extension
 const hikeList = [
     {
         name: "Bechler Falls",
