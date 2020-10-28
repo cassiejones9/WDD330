@@ -1,4 +1,6 @@
 //create an array of hikes
+
+// lifeserver is an extension
 const hikeList = [
     {
         name: "Bechler Falls",
@@ -75,16 +77,16 @@ export default class Hikes {
         const hikeElement = this.parentElement;
         hikeElement.innerHTML = "";
         const hikeInfo = renderOneHikeFull(this.getHikeByName(hikeName));
-        hikeElement.appendChild(this.getHikeByName(hikeInfo));
+        hikeElement.appendChild(hikeInfo);
         hikeElement.appendChild(this.backButton);
     }
-
+// a node is an html element
     addHikeListener() {
         // We need to loop through the children of our list and attach a listener to each, remember though that children is a nodeList...not an array. So in order to use something like a forEach we need to convert it to an array.
         const hikeListElement = this.parentElement;
         const children = hikeListElement.childNodes;
         for (let i = 0; i < children.length; i++) {
-            children[i].addEventListener('click', (event) => this.showOneHike(children[i].myName));
+            children[i].addEventListener('click', (event) => this.showOneHike(children[i].getElementsByTagName("h2")[0].innerHTML));
         }
         // const childrenArray = Array.from(this.parentElement.children);
         // childrenArray.forEach(child => {
