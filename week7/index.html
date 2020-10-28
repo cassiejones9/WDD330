@@ -78,7 +78,8 @@
     <li>If it needs to go to the Web API, it sits there for a second then drops down to the queue.</li>
     <li>The queue can only use the even loop to push back onto the call stack when the call stack is empty.</li>
     <h4>Promises</h4>
-    <li>A promise represents the future result of an asynchronous operation. Promises don't do anything that can't already
+    <li>A promise represents the future result of an asynchronous operation. Promises don't do anything that can't
+        already
         be achieved using callbacks, but they help simplify the process, and avoid the convoluted code that can result
         from using multiple callbacks. Here's an example;</li>
     <p>const promise = new Promise( (resolve, reject) => {<br>
@@ -138,7 +139,51 @@
         certain things can refresh and different times without reloading the whole page.</li>
     <li>API = Application Programming Interface</li>
     <li>fetch() method grabs a URL: fetch('https://example.com/data')</li>
-    <li></li>
+    <li>When we use a fetch on a url, we can make it a promise statement by adding the then() and catch() methods.</li>
+    <li>You can use the .statusText property to give you the exact code of the error message so you can look it up.</li>
+    <li>Here's an example of a redirect() method using a response promise:</li>
+    <p>
+        fetch(url)<br>
+        .then( response => response.redirect(newURL)); // redirects to another URL<br>
+        .then( // do something else )<br>
+        .catch( error => console.log('There was an error: ', error))
+    </p>
+    <li>The <em>text()</em> method takes a stream of text from the response, reads it to completion and then returns a
+        promise
+        that resolves to a USVSting object that can be treated as a string in JavaScript.</li>
+    <li>The blob() method takes raw data and turns it into something usable in JS. This might be really handy for the
+        team assignment.</li>
+    <li>You can create your own, custom response() object. Example: const response = new Response( 'Hello!', {<em>data
+            input goes here</em> )};</li>
+    <li>I read about headers, I read about requests(), creating new Response() objects, now we are going to put it all
+        together in a simple add todo app. Here's an example of the js code:</li>
+    <p>
+        const form = document.forms['todo'];<br>
+        form.addEventListener('submit', addTask, false);<br>
+        function addTask(event) {<br>
+        event.preventDefault();<br>
+        const task = new FormData(form);<br>
+        const url = `http://echo.jsontest.com/id/1/title/${form.task.value}`;<br>
+        const headers = new Headers({<br>
+        'Accept': 'application/json',<br>
+        'Content-Type': 'application/json'<br>
+        });<br>
+        const request = new Request(url,<br>
+        {<br>
+        method: 'POST',<br>
+        mode: 'cors',<br>
+        header: headers,<br>
+        body: JSON.stringify(task)<br>
+        }<br>
+        )<br><br>
+        fetch(request)<br>
+        .then( response => response.json() )<br>
+        .then( data => console.log(`${data.title} saved with an id of ${data.id}`) )<br>
+        .catch( error => console.log('There was an error:', error))<br>
+        }
+    </p>
+    <li>In this function, we create a new FormData instance using the FormData() constructor function and provide the
+        form as an argument. This does all the hard work of creating the task object for us.</li>
 </body>
 
 

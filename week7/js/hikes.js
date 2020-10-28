@@ -1,3 +1,5 @@
+import {comments} from './comments.js';
+
 //create an array of hikes
 const hikeList = [
     {
@@ -34,12 +36,6 @@ const hikeList = [
     }
 ];
 
-// const comments = [{
-//     name: hikeList.name,
-//     date: Date.now(),
-//     content: "",
-// }]
-
 const imgBasePath = "//byui-cit.github.io/cit261/examples/";
 //on load grab the array and insert it into the page on load
 
@@ -53,10 +49,6 @@ export default class Hikes {
     getAllHikes() {
         return hikeList;
     }
-
-    // getAllComments(){
-
-    // }
 
     // For the first stretch we will need to get just one hike.
     getHikeByName(hikeName) {
@@ -100,19 +92,6 @@ export default class Hikes {
         return backButton;
     }
 
-    // A method to add an event listener to the submit button.
-    // submitButton(){
-
-    // }
-
-    // filterCommentsByName() {
-
-    // }
-
-    // addComment() {
-
-    // }
-
 }
 // methods responsible for building HTML.  Why aren't these in the class?  They don't really need to be, and by moving them outside of the exported class, they cannot be called outside the module...they become private.
 function renderHikeList(hikes, parent) {
@@ -137,10 +116,10 @@ function renderOneHikeLight(hike) {
                 <h3>Difficulty</h3>
                 <p>${hike.difficulty}</p>
           </div>
-          <!-- <div>-->
-          <!--        <h3>Comments</h3>-->
-          <!--        <p>${comments.content}</p>-->
-          <!--   </div>-->
+          <div>
+                  <h3>Comments</h3>
+                  <p>${comments.content}</p>
+             </div>
   </div>
   </div>`;
     return item;
@@ -173,8 +152,5 @@ function renderOneHikeFull(hike) {
     return item;
 }
 
-// function renderCommentList(hike){
-
-// }
 
 
