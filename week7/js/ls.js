@@ -1,11 +1,11 @@
-// export const ls = {
-//     set: function (item) {
-//         const data = JSON.stringify(item);
-//         window.localStorage.setItem("todos", data);
-        
-//     },
-//     get: function () {
-//         const data = window.localStorage.getItem("todos");
-//         return (data !== null) ? JSON.parse(data) : null;
-//     },
-// }
+//local storage methods
+
+//get data from local storage 
+export function readFromLS(key) { 
+    return JSON.parse(localStorage.getItem(key)); 
+  }
+
+//set data in local storage
+  export function writeToLS(key, data) { 
+       localStorage.setItem(key, JSON.stringify(data));  
+  }

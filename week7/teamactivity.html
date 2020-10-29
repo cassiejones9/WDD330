@@ -5,12 +5,17 @@
     <title>Great Hikes (dynamic DOM example)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="CSS/hikeStyles.css" />
+    <!-- This gets rid of my favicon error -->
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   </head>
 
   <body>
     <main>
-      <h1>Great hikes</h1>
+      <div class = "header">
+        <h1>Great hikes</h1>
+      </div>
       <ul id="hikes" class="hikeStyles"></ul>
+      <ul id='comments' class='commentStyles'></ul>
     </main>
 
     <script src="js/main.js" type="module"></script>

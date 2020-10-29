@@ -4,7 +4,7 @@
 const hikeList = [
     {
         name: "Bechler Falls",
-        imgSrc: "falls.jpg",
+        imgSrc: "bechler.jpg",
         imgAlt: "Image of Bechler Falls",
         distance: "3 miles",
         difficulty: "Easy",
@@ -15,7 +15,7 @@ const hikeList = [
     },
     {
         name: "Teton Canyon",
-        imgSrc: "falls.jpg",
+        imgSrc: "teton.jpg",
         imgAlt: "Image of Bechler Falls",
         distance: "3 miles",
         difficulty: "Easy",
@@ -25,7 +25,7 @@ const hikeList = [
     },
     {
         name: "Denanda Falls",
-        imgSrc: "falls.jpg",
+        imgSrc: "denanda.jpg",
         imgAlt: "Image of Bechler Falls",
         distance: "7 miles",
         difficulty: "Moderate",
@@ -36,14 +36,17 @@ const hikeList = [
     }
 ];
 
-const imgBasePath = "//byui-cit.github.io/cit261/examples/";
+const imgBasePath = "//cassiejones9.github.io/WDD330/images/";
+// "//WDD330/VSCodeTest/WDD330/images/";
+// const imgBasePath = "//byui-cit.github.io/cit261/examples/";
 //on load grab the array and insert it into the page on load
 
 export default class Hikes {
-    constructor(elementId) {
+    constructor(elementId, commentsObj) {
         this.parentElement = document.getElementById(elementId);
         // we need a back button to return back to the list. This will build it and hide it. When we need it we just need to remove the 'hidden' class
         this.backButton = this.buildBackButton();
+        this.commentsObj = commentsObj;
     }
     // why is this function necessary?  hikeList is not exported, and so it cannot be seen outside of this module. I added this in case I ever need the list of hikes outside of the module. This also sets me up nicely if my data were to move. I can just change this method to the new source and everything will still work if I only access the data through this getter.
     getAllHikes() {
@@ -60,6 +63,7 @@ export default class Hikes {
         hikeListElement.innerHTML = "";
         renderHikeList(this.getAllHikes(), hikeListElement);
         this.addHikeListener();
+        this.commentsObj.showCommentList();
     }
     // show one hike with full details in the parentElement
     showOneHike(hikeName) {
@@ -69,6 +73,7 @@ export default class Hikes {
         const hikeInfo = renderOneHikeFull(this.getHikeByName(hikeName));
         hikeElement.appendChild(hikeInfo);
         hikeElement.appendChild(this.backButton);
+        this.commentsObj.showOneHikeComments(hikeName);
     }
 
     addHikeListener() {
@@ -104,10 +109,9 @@ function renderOneHikeLight(hike) {
     const item = document.createElement("li");
     // item.myName = hike.name;
     item.innerHTML = ` 
-  <div class="one">
   <h2>${hike.name}</h2>
   <div class="image"><img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}"></div>
-  <div>
+  <div class= "detail">
           <div>
                 <h3>Distance</h3>
                 <p>${hike.distance}</p>
@@ -124,10 +128,9 @@ function renderOneHikeLight(hike) {
 function renderOneHikeFull(hike) {
     const item = document.createElement("li");
     item.innerHTML = `
-    <div class="one">
   <h2>${hike.name}</h2>
   <div class="image"><img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}"></div>
-  <div>
+  <div class = "detail">
           <div>
               <h3>Distance</h3>
               <p>${hike.distance}</p>
@@ -143,12 +146,7 @@ function renderOneHikeFull(hike) {
           <div>
               <h3>Directions</h3>
               <p>${hike.directions}</p>
-          </div>
-          <form>
-            <label for="comments">Enter Your Comments About This Hike:</label><br>
-            <textarea type="text" id="comment" value="Type Here" rows="5" cols="50"><br>
-            <input type="submit" value="Submit">
-          </form> 
+          </div> 
   </div>
   </div>`;
     return item;
