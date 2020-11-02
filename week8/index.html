@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WDD 330</title>
+    <link rel="stylesheet" href="../CSS/stylesheet.css" />
+    <script></script>
+</head>
+<!-- http://localhost//WDD330/VSCodeTest/WDD330/week8/index.html -->
+
+<body>
+    <h1><a href="../index.html">WDD 330 - Web Frontend Development</a></h1>
+    <h2>Week08</h2>
+    <h3>Notes</h3>
+    <h3>Chapter 8 from HTML5 & CSS3 for the Real World - CSS3 Transformations & Transitions </h3>
+    <h4 class="transitions">Transforms</h4>
+    <li>CSS3 allows us to tilt, scale, move, skew, and flip elements!</li>
+    <li>The "transform" property helps us do this.</li>
+    <li>Translation Function - allows you to move up, down, left, right relative to it's current position.</li>
+    <li>Unlike "position: relative", the translate function doesn't matter what its parent object is doing.</li>
+    <li>"translate(x, y)" allows you to move to the left and down from the top</li>
+    <li>If you just want to move right, "transform: translateX(45px);"</li>
+    <li>If you just want to move down, "transform: translateY(45px);"</li>
+    <li>Scale(x, y) can scale the element.</li>
+    <li>You can scale the whole thing bigger by double: scale(2)</li>
+    <li>You can make it smaller: scale(.5)</li>
+    <li>You can make it wider: scaleX(2)</li>
+    <li>You can make it taller: scaleY(2)</li>
+    <li>rotate() turns an element. Here's one example turn by degrees: rotate(10deg)</li>
+    <li>Positive numbers turn clockwise; negative numbers turn counterclockwise.</li>
+    <li>skew(x, y) skews an element along the x and y axes. </li>
+    <li>skewX() and skewY() do what all the other translation properties do.</li>
+    <li><strong>Order of Operations Matters!</strong></li>
+    <h4 class="transitions">Transitions</h4>
+    <li>The transition property allows you to make changes gradually instead of quickly</li>
+    <li>The list of properties that can be animated is found at
+        https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties. </li>
+    <li>Transforms vs. Transitions: transform changes the elements position, scale or skew. Transition changes
+        properties like color, border, etc. </li>
+    <li>Declaration: transition-property: transform;</li>
+    <li>"transition-duration: 0.2s;" sets the time it takes for the transition-duration. .2s is a good amount of time
+        that is not too slow.</li>
+    <h3>This is my <span>tester</span> <span>animation</span> for all the <span class="prop">properties</span> I've learned
+        so far. <span class="hover">Hover</span> over some of <span class="testthesewords">these words.</span></h3>
+    <h3>Transition-Timing-Function Property</h3>
+    <p>This is an example using <span id="transitiontimingfunc">transition timing</span> that is more precise than the transition duration property.</p>
+
+</body>
+
+
+</html>
