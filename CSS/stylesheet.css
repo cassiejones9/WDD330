@@ -88,7 +88,7 @@ p {
 
 a:link,
 a:visited {
-  background-color: #1d3557;
+  background-color: rgb(29, 53, 87);
   color: white;
 }
 
@@ -99,4 +99,18 @@ button {
 
 form {
   margin: 20px;
+}
+
+.myCanvas {
+  border: dotted 2px black;
+}
+
+#svgbox {
+  margin: 0%;
+}
+
+.spin {
+  position: absolute;
+  top: 8px;
+  left: 55px;
 }
