@@ -24,11 +24,6 @@ function getShips(url = "https://swapi.dev/api/starships/") {
 // 1st param is the array of ships, 2nd is the element
 function renderShipList(ships, shipListElement) {
     if (shipListElement == null) return;
-    // const list = shipListElement.children;
-    // console.log(shipListElement);
-    // const listNode = document.createTextNode(list);
-    // list.innerHTML = "";
-    // console.log(ships);
     let tablerow = document.createElement("tr");
     let thead = document.getElementById("shipList");
     var headerString = `
@@ -49,10 +44,6 @@ function renderShipList(ships, shipListElement) {
             <td>${ship.crew}</td>
             </tr>
         `;
-        // listItem.addEventListener("click", function (e) {
-        //     e.preventDefault();
-        //     getShipDetails(ship.url);
-        // });
         listItem.innerHTML = listItemString;
         listItem.theShip = ship;
         thead.appendChild(listItem);
@@ -116,21 +107,17 @@ async function showShips(url) {
     renderShipList(shipResults.results, shipListElement);
     // console.log(renderShipList);
     if (shipResults.next) {
-        const next = document.getElementById("next");
-        if (next.addEventListener) {
-            next.removeEventListener("click", (e) => {
-                showShips(shipResults.next)});
-        }
+        let next = document.getElementById("next");
+        next = next.cloneNode(true);
+        document.getElementById("nextandprevbuttons").replaceChild(next, document.getElementById('next'));
         next.addEventListener("click", (e) => {
             showShips(shipResults.next);
         });
     }
     if (shipResults.previous) {
-        const prev = document.getElementById("prev");
-        if (prev.addEventListener) {
-            prev.removeEventListener("click", (e) => {
-                showShips(shipResults.prev)});
-        }
+        let prev = document.getElementById("prev");
+        prev = prev.cloneNode(true);
+        document.getElementById("nextandprevbuttons").replaceChild(prev, document.getElementById('prev'));
         prev.addEventListener("click", (e) => {
             showShips(shipResults.previous);
         });
