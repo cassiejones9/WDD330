@@ -1,3 +1,5 @@
+// let url = "https://swapi.dev/api/starships/";
+
 // Helper function
 async function getJSON(url) {
     try {
@@ -5,7 +7,7 @@ async function getJSON(url) {
         if (!response.ok) {
             throw Error(response.statusText);
         } else {
-            const fetchJson = await resonpse.json();
+            const fetchJson = await response.json();
             return fetchJson;
         }
     } catch (error) {
@@ -19,45 +21,119 @@ function getShips(url = "https://swapi.dev/api/starships/") {
 }
 
 // takes the ships, makes a list of all of them
+// 1st param is the array of ships, 2nd is the element
 function renderShipList(ships, shipListElement) {
-    const list = shipListElement.children[1];
-    list.innerHTML = "";
-    ships.forEach(function (ship) {
+    if (shipListElement == null) return;
+    // const list = shipListElement.children;
+    // console.log(shipListElement);
+    // const listNode = document.createTextNode(list);
+    // list.innerHTML = "";
+    // console.log(ships);
+    let tablerow = document.createElement("tr");
+    let thead = document.getElementById("shipList");
+    var headerString = `
+    <thead>
+    <tr><th>Name</th>
+    <th>Length</th>
+    <th>Crew</th>
+    </tr>       
+    </thead>`;
+    tablerow.innerHTML = headerString;
+    thead.appendChild(tablerow);
+    ships.forEach(ship => {
         let listItem = document.createElement("tr");
-        listItem.innerHTML = `
-        <td><a href="${ship.url}">${ship.name}</a></td>
-        <td>${ship.length}</td>
-        <td>${ship.crew}</td>
+        let listItemString = `
+            <tr>
+            <td>${ship.name}</td>
+            <td>${ship.length}</td>
+            <td>${ship.crew}</td>
+            </tr>
         `;
-        listItem.addEventListener("click", function (e) {
-            e.preventDefault();
-            getShipDetails(ship.url);
+        // listItem.addEventListener("click", function (e) {
+        //     e.preventDefault();
+        //     getShipDetails(ship.url);
+        // });
+        listItem.innerHTML = listItemString;
+        listItem.theShip = ship;
+        thead.appendChild(listItem);
+    });
+    addShipListener();
+
+}
+
+function addShipListener() {
+    let container = document.getElementById("shipList");
+    const childrenArray = Array.from(container.children);
+    childrenArray.forEach(child => {
+        child.addEventListener('click', e => {
+            renderShipDetails(e.currentTarget.theShip);
         });
-        list.appendChild(listItem);
     });
 }
 
 // this is a stretch goal
 function renderShipDetails(shipData) {
-    console.log(shipData);
+    // console.log(shipData);
+    let html = '';
+    html = `
+    <thead>
+    <tr>
+    <th>Ship Name</th>
+    <th>Ship Model</th>
+    <th>Class</th>
+    <th>Capacity</th>
+    <th>Cost in Credits</th>
+    </tr>
+    <tr>
+    <td>${shipData.name}</td>
+    <td>${shipData.model}</td>
+    <td>${shipData.starship_class}</td>
+    <td>${shipData.cargo_capacity}</td>
+    <td>${shipData.cost_in_credits}</td>
+    </tr>
+    </thead>
+    `;
+    let container = document.getElementById("shipList");
+    container.innerHTML = html;
+    container.appendChild(buildBackButton(shipData));
+}
+
+function buildBackButton() {
+    const backButton = document.createElement("button");
+    backButton.innerHTML = 'Back to Ships';
+    backButton.addEventListener('click', (event) => showShips());
+    return backButton;
 }
 
 // uses Prev and Next buttons to show next set and previous set
-async function showShips(url = "https://swapi.dev/api/starships/") {
+async function showShips(url) {
+    // console.log(url);
     const shipResults = await getShips(url);
+    // console.log(shipResults);
     const shipListElement = document.getElementById("shipList");
-    renderShipList(results.results, shipListElement);
-    if (results.next) {
+    // console.log(shipListElement);
+    shipListElement.innerHTML = '';
+    renderShipList(shipResults.results, shipListElement);
+    // console.log(renderShipList);
+    if (shipResults.next) {
         const next = document.getElementById("next");
-        next.ontouchend = () => {
-            showShips(data.next);
-        };
+        if (next.addEventListener) {
+            next.removeEventListener("click", (e) => {
+                showShips(shipResults.next)});
+        }
+        next.addEventListener("click", (e) => {
+            showShips(shipResults.next);
+        });
     }
-    if (results.previous) {
+    if (shipResults.previous) {
         const prev = document.getElementById("prev");
-        prev.ontouchend = () => {
-            showShips(data.previous);
-        };
+        if (prev.addEventListener) {
+            prev.removeEventListener("click", (e) => {
+                showShips(shipResults.prev)});
+        }
+        prev.addEventListener("click", (e) => {
+            showShips(shipResults.previous);
+        });
     }
 }
 
@@ -66,3 +142,5 @@ async function getShipDetails(url) {
     const ship = await getShips(url);
     renderShipDetails(ship);
 }
+
+showShips();
