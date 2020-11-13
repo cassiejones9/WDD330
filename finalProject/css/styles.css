@@ -1,0 +1,55 @@
+html {
+    background-color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#logo {
+    max-height: 175px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+/* form for user input */
+#dropdownmenus {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    max-width: 100%;
+    align-content: center;
+    font-size: larger;
+}
+
+/* each dropdown menu */
+.dropdownmenus {
+    margin: 15px;
+    padding: 15px;
+}
+
+button {
+    cursor: pointer;
+    text-align: center;
+    background-color: #0d1a32;
+    color: white;
+    font-size: larger;
+    padding: 10px;
+    margin: 10px;
+}
+
+label {
+    font-size: larger;
+    color: #0d1a32;
+}
+
+select.dropdownmenus {
+    font-size: medium;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* for Larger screen */
+@media screen and (min-width: 768px) {
+
+    /* Would I change anything for a large screen? */
+
+}

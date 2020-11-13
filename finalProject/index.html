@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Learn the Bow - Bow Finder</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- blank favicon for now -->
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <!-- http://localhost//WDD330/VSCodeTest/WDD330/finalProject/index.html -->
+</head>
+
+<body>
+    <div><img src="images/lblogo.jpg" id="logo"></div>
+    <form id="dropdownmenus">
+        <label>Select Your Level</label>
+        <select name="level" class="dropdownmenus">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+        </select>
+        <label>Select the Type of Bow</label>
+        <select name="type" class="dropdownmenus">
+            <option value="compound">Compound Bows</option>
+            <option value="recurve">Recurve Bows</option>
+        </select>
+        <label>Shooting for Hunting or Competition?</label>
+        <select name="category" class="dropdownmenus">
+            <option value="competition">Competition Shooting</option>
+            <option value="hunting">Hunting</option>
+        </select>
+        <button>Find Your Bow</button>
+    </form>
+    <div class="results">
+
+    </div>
+
+</body>
+
+</html>

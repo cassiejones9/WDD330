@@ -44,45 +44,12 @@ td {
     padding: 0.5em;
 }
 
-/* #detailsbox {
-    flex: 1 0 15em;
-    padding: 1em;
-    text-align: center;
-    border: 2px solid;
-} */
-
-/* #detailsbox dl {
-    border: 1px solid;
-    text-align: left;
-} */
-
-/* #shiplist {
-    display: flex;
-    flex-flow: row wrap;
-    list-style-type: none;
-  } */
-
 th {
     background-color: lightgray;
     margin-bottom: 30px;
     padding: 10px 25px 10px 25px;
     font-size: large;
 }
-
-/* #shiplist th {
-      padding: 10px 25px 10px 25px;
-      font-size: x-large;
-  } */
-
-/* tr {
-    border: 1px solid;
-    padding: 0.5em;
-    height: 44px;
-} */
-
-/* #shiplist tr:nth-child(even) {
-    background-color: azure;
-  } */
 
 #backtonotes {
     position: fixed;
@@ -95,12 +62,3 @@ th {
 #nextandprevbuttons {
     margin-top: 30px;
 }
-
-/* .listbox {
-      padding-bottom: 30px;
-  } */
-
-
-/* #shipListItems {
-      margin-bottom: 20px;
-  } */
