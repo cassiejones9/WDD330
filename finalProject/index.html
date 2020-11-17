@@ -16,27 +16,27 @@
     <div><img src="images/lblogo.jpg" id="logo"></div>
     <form id="dropdownmenus">
         <label>Select Your Level</label>
-        <select name="level" class="dropdownmenus">
+        <select id="level" class="dropdownmenus">
             <option value="beginner">Beginner</option>
             <option value="intermediate">Intermediate</option>
             <option value="advanced">Advanced</option>
         </select>
         <label>Select the Type of Bow</label>
-        <select name="type" class="dropdownmenus">
+        <select id="type" class="dropdownmenus">
             <option value="compound">Compound Bows</option>
             <option value="recurve">Recurve Bows</option>
         </select>
         <label>Shooting for Hunting or Competition?</label>
-        <select name="category" class="dropdownmenus">
+        <select id="category" class="dropdownmenus">
             <option value="competition">Competition Shooting</option>
             <option value="hunting">Hunting</option>
         </select>
-        <button>Find Your Bow</button>
+        <button onclick="determineLevel()">Find Your Bow</button>
     </form>
-    <div class="results">
+    <span class="results">
 
-    </div>
-
+    </span>
+<script src="js/main.js" type="module"></script>
 </body>
 
 </html>

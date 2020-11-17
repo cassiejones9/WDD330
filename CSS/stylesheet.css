@@ -114,3 +114,8 @@ form {
   top: 8px;
   left: 55px;
 }
+
+.red {
+  background-color: rgb(80, 13, 13);
+  color: white;
+}

@@ -30,22 +30,32 @@ html {
 button {
     cursor: pointer;
     text-align: center;
-    background-color: #0d1a32;
+    background-color: #727272;
     color: white;
     font-size: larger;
     padding: 10px;
-    margin: 10px;
+    margin: 15px;
+    border: 1px solid #727272;
+    border-radius: 5px;
 }
 
 label {
-    font-size: larger;
+    font-size: 20px;
     color: #0d1a32;
 }
 
 select.dropdownmenus {
     font-size: medium;
     font-family: 'Times New Roman', Times, serif;
+    background-color: #0d1a32;
+    color: white;
+    border: 1px solid #0d1a32;
+    border-radius: 5px;
 }
+
+/* select.items {
+    background-color: #0d1a32;
+} */
 
 /* for Larger screen */
 @media screen and (min-width: 768px) {
