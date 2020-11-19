@@ -49,20 +49,22 @@ export default class QuakesController {
         // render the list to html
         this.quakesView.renderQuakeList(quakeList, this.parentElement);
         // add a listener to the new list of quakes to allow drill down in to the details
-        this.parentElement.addEventListener('click', e => {
-            this.getQuakeDetails(e.target.dataset.id);
-        });
+        // this.parentElement.addEventListener('click', e => {
+        this.parentElement.onclick = e => {
+            this.getQuakeDetails(e.target.dataset.id, radius);
+        };
     }
-    async getQuakeDetails(quakeId) {
+    async getQuakeDetails(quakeId, radius) {
         // get the details for the quakeId provided from the model, then send them to the view to be displayed
+        this.parentElement.onclick = null;
         this.parentElement.innerHTML = 'Loading...';
         const oneQuake = await this.quakes.getQuakeById(quakeId);
         // console.log(oneQuake);
         this.quakesView.renderQuake(oneQuake, this.parentElement);
-        // oneQuake.appendChild(this.backButton);
+        this.parentElement.appendChild(this.buildBackButton(radius));
     }
 
-    buildBackButton() {
+    buildBackButton(radius) {
         const backButton = document.createElement("button");
         backButton.innerText = "Back to Earthquakes";
         backButton.addEventListener('click', (event) => this.getQuakesByRadius(radius));

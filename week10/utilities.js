@@ -3,10 +3,12 @@
 export async function getJSON(url) {
     try {
         const response = await fetch(url);
+        console.log(response);
         if (!response.ok) {
             throw Error(response.statusText);
         } else {
             const fetchJson = await response.json();
+            console.log(fetchJson);
             return fetchJson;
         }
     } catch (error) {
