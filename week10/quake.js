@@ -18,23 +18,7 @@ export default class Quake {
     }
    async getQuakeById(id) {
         // console.log(id);
-        // console.log(this._quakes);
-        // console.log(this._quakes.then(this._quakes.features));
-        // this._quakes = [];
         return this._quakes.features.filter(item => item.id === id)[0];
 
-        //     let quakeIdresult;
-        //     // filter this._quakes for the record identified by id and return it
-        //     // console.log(this._quakes);
-        //     // console.log(this._quakes.[[]].features);
-        //     this._quakes.then(quakeIdresult = function (result) {
-        //         // console.log(result.features);
-
-        //         return result.features.filter(item => item.id === id)[0];
-        //         // console.log(quakeIdresult);
-        //     });
-        //     console.log(quakeIdresult);
-        //     return quakeIdresult;
-        //   }
     }
 }
