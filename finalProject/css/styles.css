@@ -1,6 +1,6 @@
 html {
     background-color: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Centaur", Times, "Times New Roman", serif
 }
 
 #logo {
@@ -14,8 +14,9 @@ html {
 /* form for user input */
 #dropdownmenus {
     display: flex;
+    /* align-items: center; */
     flex-flow: column wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     max-width: 100%;
     align-content: center;
     font-size: larger;
@@ -23,7 +24,7 @@ html {
 
 /* each dropdown menu */
 .dropdownmenus {
-    margin: 15px;
+    margin-bottom: 30px;
     padding: 15px;
 }
 
@@ -39,9 +40,18 @@ button {
     border-radius: 5px;
 }
 
-label {
+h2 {
     font-size: 20px;
     color: #0d1a32;
+    margin-bottom: 2px;
+    margin-top: 15px;
+}
+
+p {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 95%;
 }
 
 select.dropdownmenus {
@@ -61,5 +71,10 @@ select.dropdownmenus {
 @media screen and (min-width: 768px) {
 
     /* Would I change anything for a large screen? */
-
+    p {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 15%;
+    }
 }

@@ -168,15 +168,30 @@ function determineCategory() {
     return catValue;
 }
 
-function displayResults(one, two, three) {
-    //  take what info comes from all the determine functions
-    // if condition statements to display results
-    // so if they chose levelValue = intermediate, typeValue = compound, and catValue = hunting
-    // display those results
-    determineLevel();
-    determineType();
-    determineCategory();
-    renderBows(); // render bows that fit that description
+function filterResults() {
+    const levelResultsAdvanced = psebows.filter(level => level == "advanced" );
+    const levelResultsIntermediate = psebows.filter(level => level == "advanced" );
+    const levelResultsBeginner = psebows.filter(level => level == "advanced" );
+    const typeResultsCompound = psebows.filter(type => type == "compound" );
+    const typeResultsRecurve = psebows.filter(type => type == "recurve" );
+    const catResultsCompetition = psebows.filter(category => category == "competition" );
+    const catResultsHunting = psebows.filter(category => category == "hunting" );
+    const level = determineLevel();
+    const type = determineType();
+    const category = determineCategory();
+    if (level = levelResultsAdvanced) {
+        renderBows(level, type, category);
+    }
+}
+
+function displayResults() {
+    const level = determineLevel();
+    const type = determineType();
+    const category = determineCategory();
+    
+
+    // filtering would happen here
+    // renderBows(); // render bows that fit that description
 
 }
 

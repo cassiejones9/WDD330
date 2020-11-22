@@ -11,36 +11,38 @@ async function getJSON(url) {
         console.log(error);
     }
 }
+https://pokeapi.co/api/v2/
 
 
-function getMovies(url = "http://example.com/movies.json") {
+function getPokemon(url = "https://pokeapi.co/api/v2/pokemon/ditto") {
     return getJSON(url);
 }
 
-function renderMovieList(movies, movieListElement) {
-    if (movieListElement == null) return;
+function renderPokeList(pokemon, pokeListElement) {
+    if (pokeListElement == null) return;
     let ul = document.createElement("ul");
-    let variablename = document.getElementById("movieList");
+    let variablename = document.getElementById("pokeList");
     var ulString = `
     <ul></ul>`;
     ul.innerHTML = ulString;
     variablename.appendChild(ul);
-    movies.forEach(movie => {
+    pokemon.forEach(poke => {
         let ul = document.createElement("ul");
-        let movieListString = `
-            <ul>${moive.name}</ul>`;
-        ul.innerHTML = movieListString;
-        ul.theShip = movie;
+        let pokeListString = `
+            <ul>${poke.name}</ul>`;
+        ul.innerHTML = pokeListString;
+        ul.theShip = poke;
         variablename.appendChild(ul);
     });
 }
 
-async function showMovies(url) {
+async function showPokeman(url) {
     // console.log(url);
-    const movieResults = await getMovies(url);
+    const pokeResults = await getPokemon(url);
     // console.log(shipResults);
-    const movieListElement = document.getElementById("movieList");
+    const pokeListElement = document.getElementById("pokeList");
     // console.log(shipListElement);
-    movieListElement.innerHTML = '';
-    renderMovieList(movieResults.results, movieListElement);
+    pokeListElement.innerHTML = '';
+    renderPokeList(pokeResults.results, pokeListElement);
     // console.log(renderShipList);
+}
