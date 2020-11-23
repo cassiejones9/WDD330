@@ -1,4 +1,4 @@
-const psebows = [{
+export const psebows = [{
         name: 'Xpedite NXT',
         imgSrc: '../images/xpeditenxt.png',
         imgAlt: 'Expedite Next Compound Bow',
