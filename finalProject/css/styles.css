@@ -40,6 +40,29 @@ button {
     border-radius: 5px;
 }
 
+button:hover {
+    color: #727272;
+    background-color: white;
+}
+
+/* a:link.purchasebutton {
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    background-color: #727272;
+    font-size: medium;
+    padding: 7px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #727272;
+    border-radius: 5px;
+}
+
+a:hover.purchasebutton {
+    color: #727272;
+    background-color: white;
+} */
+
 h2 {
     font-size: 20px;
     color: #0d1a32;
@@ -63,9 +86,70 @@ select.dropdownmenus {
     border-radius: 5px;
 }
 
+.image {
+    max-width: auto;
+    max-height: 250px;
+    /* width: auto;
+    height: 300px; */
+}
+
+h5 {
+    margin-top: 10px;
+    margin-bottom: 8px;
+    font-size: large;
+}
+
+p {
+    margin-top: -5px;
+}
+
+hr {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 5px;
+    background-color: #0d1a32;
+    border-width: 0px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0px 0px 0px 10px;
+    text-align: center;
+
+}
+
+a:link {
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    background-color: #727272;
+    font-size: medium;
+    padding: 7px;
+    margin: 100px;
+    border: 1px solid #727272;
+    border-radius: 5px;
+}
+
+a:visited {
+    color: white;
+    background-color: #0d1a32;
+    margin: 20px;
+}
+
+a:hover {
+    cursor: pointer;
+    color: #727272;
+    background-color: white;
+    margin: 20px;
+}
+
+
 /* select.items {
     background-color: #0d1a32;
 } */
+
+/* Give it some cool transitions on the link hover */
 
 /* for Larger screen */
 @media screen and (min-width: 768px) {
@@ -76,5 +160,14 @@ select.dropdownmenus {
         margin-left: auto;
         margin-right: auto;
         max-width: 15%;
+    }
+
+    hr {
+        width: 30%;
+    }
+
+    .image {
+        max-width: auto;
+        max-height: 500px;
     }
 }

@@ -189,35 +189,40 @@ function renderBows(filteredBows) {
     filteredBows.forEach(bow => {
         const item = document.createElement("li");
         item.innerHTML = `
-                        <h3>${bow.name}</h3>
-                        <div class="image"><img src="${bow.imgSrc}" alt="${bow.imgAlt}"></div>
-                        <div class = "detail">
-                        <div>
-                            <h5>Draw Weight</h5>
-                            <p>${bow.drawWeight}</p>
-                        </div>
-                        <div>
-                            <h5>Draw Length</h5>
-                            <p>${bow.drawLength}</p>
-                        </div>
-                        <div>
-                            <h5>Mass Weight</h5>
-                            <p>${bow.massWeight}</p>
-                        </div>
-                        <div>
-                            <h5>Speed</h5>
-                            <p>${bow.speed}</p>
-                        </div> 
-                        <div>
-                            <h5>Axle to Axle</h5>
-                            <p>${bow.axle2axle}</p>
-                        </div> 
-                        <div>
-                            <h5>Colors Available</h5>
-                            <p>${bow.color}</p>
-                        </div> 
-                        </div>
-                        </div>`;
+            <hr>
+            <h3>${bow.name}</h3>
+            <div><img src="${bow.imgSrc}" alt="${bow.imgAlt}" class="image"></div>
+                <div class = "detail">
+                    <div>
+                        <h5>Draw Weight</h5>
+                        <p>${bow.drawWeight}</p>
+                    </div>
+                    <div>
+                        <h5>Draw Length</h5>
+                        <p>${bow.drawLength}</p>
+                    </div>
+                    <div>
+                        <h5>Mass Weight</h5>
+                        <p>${bow.massWeight}</p>
+                    </div>
+                    <div>
+                        <h5>Speed</h5>
+                        <p>${bow.speed}</p>
+                    </div> 
+                    <div>
+                        <h5>Axle to Axle</h5>
+                        <p>${bow.axle2axle}</p>
+                    </div> 
+                    <div>
+                        <h5>Colors Available</h5>
+                        <p>${bow.color}</p>
+                    </div> 
+                    <div>
+                        <h5>Where to buy this item:</h5>
+                        <a href="${bow.url}" target="_blank" class="purchasebutton">${bow.name}</a>
+                    </div>
+                </div>
+                `;
         list.appendChild(item);
     });
     return list;
