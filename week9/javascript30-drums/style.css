@@ -37,8 +37,8 @@ html {
   transform: scale(1.1);
   border-color: #ffc600;
   box-shadow: 0 0 1rem #ffc600;
-  /* position: relative;
-  top: 10px; */
+  position: relative;
+  top: 10px;
 }
 
 /* .move {
