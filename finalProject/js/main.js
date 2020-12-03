@@ -31,17 +31,25 @@ function filterResults() {
     const resultsDiv = document.getElementById("results");
     resultsDiv.innerHTML = "";
     resultsDiv.innerHTML = results;
-    resultsDiv.addEventListener('click', (event) => renderOneBow(children[i].getElementByTagName("h3")[0].innerHTML));
+    // console.log(resultsDiv);
+    // console.log(resultsDiv.querySelectorAll(".bowbox1"));
+    // console.log(resultsDiv.getElementsByTagName("h3")[1].innerHTML);
+    // console.log(resultsDiv.getElementsByTagName("h3")[0].innerHTML);
+    let newArray = resultsDiv.querySelectorAll(".bowbox1");
+    for (var i=0; i <newArray.length; i++){
+        console.log(newArray[i].getElementsByTagName("h3")[0].innerHTML);
+        let bowname = newArray[i].getElementsByTagName("h3")[0].innerHTML;
+        newArray[i].addEventListener('click', (event) => renderOneBow(bowname));
+    }
+    
 }
 
 // This is just a function to get ideas on how to display the bows and the info
 function renderBows(filteredBows) {
     let item = "";
-    // const item = document.createElement("div");
-    // const list = document.createElement("ul");
     filteredBows.forEach(bow => {
         item += `
-            <div class="bowbox">
+            <div class="bowbox1">
                 <h3>${bow.name}</h3>
                 <div><img src="${bow.imgSrc}" alt="${bow.imgAlt}" class="image"></div>
                     <div class = "detail">
@@ -57,6 +65,9 @@ function renderBows(filteredBows) {
                             <h5>Axle to Axle</h5>
                             <p>${bow.axle2axle}</p>
                         </div> 
+                        <div>
+                            <h4>Click Here for More Information</h4>
+                        </div>
                     </div>
                 </div>
                 `;
@@ -65,89 +76,82 @@ function renderBows(filteredBows) {
     return item;
 }
 
-function renderOneBow(bow) {
+function renderOneBow(bowname) {
+    let specificBow = bows.filter(bow => bow.name == bowname);
     let item = "";
-    item.innerHTML = `
-        <div class="bowbox">
-        <h3>${bow.name}</h3>
-        <div><img src="${bow.imgSrc}" alt="${bow.imgAlt}" class="image"></div>
+    item += `
+        <div class="bowbox2">
+        <h3>${specificBow[0].name}</h3>
+        <div><img src="${specificBow[0].imgSrc}" alt="${specificBow[0].imgAlt}" class="image"></div>
             <div class = "detail">
                 <div>
                     <h5>Draw Weight</h5>
-                    <p>${bow.drawWeight}</p>
+                    <p>${specificBow[0].drawWeight}</p>
                 </div>
                 <div>
                     <h5>Draw Length</h5>
-                    <p>${bow.drawLength}</p>
+                    <p>${specificBow[0].drawLength}</p>
                 </div>
                 <div>
                     <h5>Mass Weight</h5>
-                    <p>${bow.massWeight}</p>
+                    <p>${specificBow[0].massWeight}</p>
                 </div>
                 <div>
                     <h5>Speed</h5>
-                    <p>${bow.speed}</p>
+                    <p>${specificBow[0].speed}</p>
                 </div> 
                 <div>
                     <h5>Axle to Axle</h5>
-                    <p>${bow.axle2axle}</p>
+                    <p>${specificBow[0].axle2axle}</p>
                 </div> 
                 <div>
                     <h5>Colors Available</h5>
-                    <p>${bow.color}</p>
+                    <p>${specificBow[0].color}</p>
                 </div> 
                 <div>
                     <h5>Where to buy this item:</h5>
-                    <a href="${bow.url}" target="_blank" class="purchasebutton">${bow.name}</a>
+                    <a href="${specificBow[0].url}" target="_blank" class="purchasebutton">${specificBow[0].name}</a>
                 </div>
                 <div>
                     <h5>Save this item to my favorites List</h5>
-                    <button onclick="${saveBow(bow.name)}" class="save">Save to Favorites</button>
+                    
                 </div>
             </div>
         </div>
         `;
-    return item;
+        let resultsDiv = document.getElementById("results");
+        resultsDiv.innerHTML = "";
+        resultsDiv.innerHTML = item;
 }
 
-function saveBow(bow) {
-    let currentDateAndTime = new Date();
-    let bowsaved = bow;
-    localStorage.setItem(bowsaved);
+// function saveBow(bow) {
+//     let currentDateAndTime = new Date();
+//     let bowsaved = document.getElementById(bow).value;
+//     localStorage.setItem(bowsaved);
 
-    let desc_box = document.getElementById('description_input')
-    let aNoteDescription = desc_box.value
-    let text_box = document.getElementById('note_editor')
-    let aNoteText = text_box.value
-    let aCompleteNote = currentDateAndTime.toLocaleString() + "--"
-        + aNoteDescription
-    aCompleteNote += "<p>" + aNoteText + "</p>"
+//     let allBows = JSON.parse(storedBows);
+//     if (allBows == null) {
+//         allBows = []
+//     }
+//     allBows.push();
+//     let allBowsString = JSON.stringify(allBows);
+//     localStorage.setItem("all_bows", allBowsString);
+//     showSavedBows();
 
-    let storedBows = localStorage.getItem("all_bows")
-    let allBows = JSON.parse(storedBows)
-    if (allBows == null) {
-        allBows = []
-    }
-    allBows.push(aCompleteNote)
-    let allBowsString = JSON.stringify(allBows)
-    localStorage.setItem("all_bows", allBowsString)
-    showSavedBows()
-    // document.getElementById('description_input').value = null
-    // document.getElementById('note_editor').value = null
-    desc_box.value = null
-    text_box.value = null
-}
+// }
 
-function showSavedBows() {
-    let storedBows = localStorage.getItem("all_bows")
-    let allBows = JSON.parse(storedBows)
-    if(allBows != null) {
-        let noteDisplayer = document.getElementById('all_notes_display')
-        noteDisplayer.innerHTML = null
-        let numberOfNotes = allNotes.length
-        for (let i = 0; i < numberOfNotes; i++) {
-            let aNote = allNotes[i]
-            noteDisplayer.innerHTML += "<hr><p>" + aNote + "</p>"
-        }
-    }
-}
+// function showSavedBows() {
+//     let storedBows = localStorage.getItem("all_bows");
+//     let allBows = JSON.parse(storedBows);
+//     if(allBows != null) {
+//         let favoritesDisplayed = document.getElementById('favorites');
+//         favoritesDisplayed.innerHTML = "";
+//         let numberOfNotes = allNotes.length;
+//         for (let i = 0; i < numberOfNotes; i++) {
+//             let aNote = allNotes[i]
+//             favoritesDisplayed.innerHTML += "<hr><p>" + aNote + "</p>"
+//         };
+
+//     };
+// }
+// <button onclick="${saveBow($bow.name)}" class="save">Save to Favorites</button>

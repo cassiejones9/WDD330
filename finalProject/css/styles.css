@@ -74,6 +74,15 @@ p {
     max-width: 95%;
 }
 
+h4 {
+    cursor: pointer;
+    color: #0d1a32;
+}
+
+h3 {
+    color: #0d1a32;
+}
+
 select.dropdownmenus {
     font-size: medium;
     font-family: 'Times New Roman', Times, serif;
@@ -107,6 +116,7 @@ h5 {
     margin-top: 10px;
     margin-bottom: 8px;
     font-size: large;
+    color: #0d1a32;
 }
 
 p {
@@ -138,7 +148,14 @@ a:hover {
 }
 
 /* Bow Container */
-.bowbox {
+.bowbox1 {
+    transition: 1s;
+    border: 1px solid #0d1a32;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.bowbox2 {
     transition: 1s;
     border: 1px solid #0d1a32;
     border-radius: 5px;
@@ -175,12 +192,23 @@ a:hover {
 
     }
 
-    .bowbox {
-        height: 1400px;
+    .bowbox1 {
+        height: 850px;
         width: 400px;
         margin: 20px;
     }
-    .bowbox:hover {
+
+    .bowbox1:hover {
+        position: relative;
+        top: -10px;
+    }
+
+    .bowbox2 {
+        width: 400px;
+        margin: 20px;
+    }
+
+    .bowbox2:hover {
         position: relative;
         top: -10px;
     }
