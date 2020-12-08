@@ -121,7 +121,7 @@ export default class bowUtilities {
                         <p>${specificBow[0].color}</p>
                     </div> 
                     <div>
-                        <h5>Where to buy this item:</h5>
+                        <h5>More information and where to buy this item:</h5>
                         <a href="${specificBow[0].url}" target="_blank" class="purchasebutton">${specificBow[0].name}</a>
                     </div>
                     <div>
