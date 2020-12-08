@@ -142,7 +142,7 @@ select.dropdownmenus {
 /* Bow pictures */
 .image {
     max-width: auto;
-    max-height: 250px;
+    max-height: 200px;
     animation: fadeIn ease 4s;
     /* width: auto;
     height: 300px; */
@@ -234,7 +234,7 @@ a:hover {
 
     .image {
         max-width: auto;
-        max-height: 500px;
+        max-height: 400px;
     }
 
     #results {
@@ -259,7 +259,7 @@ a:hover {
     }
 
     .bowbox1 {
-        height: 900px;
+        height: 720px;
         width: 400px;
         margin: 20px;
     }

@@ -77,10 +77,6 @@ export default class bowUtilities {
                                 <p>${bow.massWeight}</p>
                             </div>
                             <div>
-                                <h5>Axle to Axle</h5>
-                                <p>${bow.axle2axle}</p>
-                            </div> 
-                            <div>
                                 <h4>Click Here for More Information</h4>
                             </div>
                         </div>
