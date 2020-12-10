@@ -4,12 +4,43 @@ html {
 }
 
 /* Learn the Bow Logo */
-#logo {
+/* #logo {
     max-height: 175px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
+
+} */
+
+#shootingBow {
+    animation: shootbow 1s 5;
+    width: 240px;
+    height: 175px;
+    background-image: url(../images/logo8.jpg);
+    position: relative;
+    animation-timing-function: steps(5, end);
+    margin: auto;
+}
+
+@keyframes shootbow {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -1200px 0;
+    }
+}
+
+.layout {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
 }
 
 /* form for user input */
@@ -27,6 +58,8 @@ html {
 .dropdownmenus {
     margin-bottom: 30px;
     padding: 15px;
+    width: 90%;
+    text-align: center;
 }
 
 /* Find Your Bow Button */
@@ -36,8 +69,9 @@ button {
     background-color: #727272;
     color: white;
     font-size: larger;
+    width: 100%;
     padding: 10px;
-    margin: 15px;
+    margin-bottom: 20px;
     border: 1px solid #727272;
     border-radius: 5px;
     transition: .3s;
@@ -54,6 +88,7 @@ button.save {
     color: white;
     background-color: #727272;
     font-size: medium;
+    width: 90%;
     margin: 10px;
     border: 1px solid #727272;
     border-radius: 5px;
@@ -72,6 +107,7 @@ button.remove {
     background-color: white;
     color: #727272;
     font-size: small;
+    width: 90%;
     padding: 10px;
     margin: 15px;
     border: 1px solid #727272;
@@ -108,6 +144,7 @@ p {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 5px;
     max-width: 95%;
     color: #0d1a32;
 }
@@ -149,9 +186,14 @@ select.dropdownmenus {
 }
 
 @keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}        
+    0% {
+        opacity: 0;
     }
+
+    100% {
+        opacity: 1;
+    }
+}
 
 h5 {
     margin-top: 10px;
@@ -160,8 +202,14 @@ h5 {
     color: #0d1a32;
 }
 
-p {
+/* p {
     margin-top: -5px;
+} */
+
+#error p {
+    color: rgb(171, 22, 22);
+    font-size: x-large;
+    text-align: center;
 }
 
 a:link {
@@ -202,6 +250,7 @@ a:hover {
     border-radius: 5px;
     margin-bottom: 15px;
 }
+
 .bowbox3 {
     transition: 1s;
     border: 1px solid #bfbfbf;
@@ -224,12 +273,37 @@ a:hover {
         display: block;
         margin-left: auto;
         margin-right: auto;
-        max-width: 15%;
         padding-top: 10px;
     }
 
-    hr {
-        width: 30%;
+    p.directions {
+        text-align: center;
+    }
+
+    .layout {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        max-width: 15%;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    #dropdownmenus {
+        display: flex;
+        align-items: center;
+        flex-flow: row;
+        justify-content: center;
+        max-width: 100%;
+        align-content: center;
+        font-size: larger;
+    }
+
+    /* each dropdown menu */
+    .dropdownmenus {
+        margin: 15px;
+        padding: 15px;
+        width: 300px;
     }
 
     .image {
@@ -237,22 +311,43 @@ a:hover {
         max-height: 400px;
     }
 
+    #shootingBow {
+        width: 300px;
+        height: 250px;
+        background-image: url(../images/logo7.jpg);
+    }
+    
+    @keyframes shootbow {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: -1500px 0;
+        }
+    }
+
+    button {
+        width: 30%;
+        display: block;
+        margin: 35px auto 15px;
+    }
+
     #results {
-        text-align: center;
+        /* text-align: center; */
         display: flex;
         flex-flow: row;
         justify-content: center;
     }
 
     #favorites {
-        text-align: center;
+        /* text-align: center; */
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
     }
 
     h2.favoriteBows {
-        max-width: 250px;
+        max-width: 800px;
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -282,7 +377,7 @@ a:hover {
     .bowbox3 {
         width: 400px;
         margin: 20px;
-        float: left;
+        /* float: left; */
     }
 
     .bowbox3:hover {

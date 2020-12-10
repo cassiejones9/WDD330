@@ -126,6 +126,7 @@ export default class bowUtilities {
                     </div>
                     <div>
                         <h5>Save this item to my favorites list</h5>
+                        <p>(Item gets saved below)</p>
                         <button onclick="window.myBows.saveBow('${specificBow[0].name}')" class="save">Save to Favorites</button>
                     </div>
                 </div>
@@ -144,12 +145,18 @@ export default class bowUtilities {
         if (favoriteBows == null) {
             favoriteBows = new Array();
         }
-        // console.log(favoriteBows);
+        // make it so they can't add an item twice
         let savedFavoriteBow = specificBow;
-        favoriteBows.push(savedFavoriteBow);
+        let n = favoriteBows.includes(savedFavoriteBow);
+        // console.log(n);
+        if (n) {
+            let errormsg = document.getElementById("error");
+            errormsg.classList.remove("hidden");
+            window.setTimeout(() => errormsg.classList.add("hidden"), 3000);
+        }
+        else {favoriteBows.push(savedFavoriteBow);
         ls.set(favoriteBows);
-
-        this.showingSavedBows();
+        this.showingSavedBows();}
     }
 
     showingSavedBows() {
